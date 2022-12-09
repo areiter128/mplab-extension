@@ -250,8 +250,10 @@ export class MDBCommunications extends EventEmitter {
 
 	/** A dictionary translating Configuration tool names to MDB tool names */
 	private confToMdBNames = {
-		"PICkit3PlatformTool": "PICKit3",
-		"pk4hybrid": "PICKit4",
+		"PICkit3PlatformTool": "MPLAB PICkit 3",
+		"pk4hybrid": "MPLAB PICkit 4",
+		"ICD4Tool" : "MPLAB ICD 4",
+		"ri4hybrid" : "MPLAB ICE 4",
 		"Simulator": "Sim",
 	};
 
