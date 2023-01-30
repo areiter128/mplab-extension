@@ -11,46 +11,82 @@
 // 'C' source line config statements
 
 // CONFIG1L
-#pragma config WDTEN = OFF      // Watchdog Timer (Disabled - Controlled by SWDTEN bit)
-#pragma config PLLDIV = 1       // PLL Prescaler Selection (No prescale (4 MHz oscillator input drives PLL directly))
-#pragma config CFGPLLEN = OFF   // PLL Enable Configuration Bit (PLL Disabled)
-#pragma config STVREN = ON      // Stack Overflow/Underflow Reset (Enabled)
-#pragma config XINST = OFF      // Extended Instruction Set (Disabled)
+// DSPIC33CK256MP506 Configuration Bit Settings
+// 'C' source line config statements
+// FSEC
+#pragma config BWRP = OFF               // Boot Segment Write-Protect bit (Boot Segment may be written)
+#pragma config BSS = DISABLED           // Boot Segment Code-Protect Level bits (No Protection (other than BWRP))
+#pragma config BSEN = OFF               // Boot Segment Control bit (No Boot Segment)
+#pragma config GWRP = OFF               // General Segment Write-Protect bit (General Segment may be written)
+#pragma config GSS = DISABLED           // General Segment Code-Protect Level bits (No Protection (other than GWRP))
+#pragma config CWRP = OFF               // Configuration Segment Write-Protect bit (Configuration Segment may be written)
+#pragma config CSS = DISABLED           // Configuration Segment Code-Protect Level bits (No Protection (other than CWRP))
+#pragma config AIVTDIS = OFF            // Alternate Interrupt Vector Table bit (Disabled AIVT)
 
-// CONFIG1H
-#pragma config CPUDIV = OSC1    // CPU System Clock Postscaler (No CPU system clock divide)
-#pragma config CP0 = OFF        // Code Protect (Program memory is not code-protected)
+// FBSLIM
+#pragma config BSLIM = 0x1FFF           // Boot Segment Flash Page Address Limit bits (Enter Hexadecimal value)
 
-// CONFIG2L
-#pragma config OSC = INTOSC     // Oscillator (INTOSC)
-#pragma config SOSCSEL = HIGH   // T1OSC/SOSC Power Selection Bits (High Power T1OSC/SOSC circuit selected)
-#pragma config CLKOEC = OFF     // EC Clock Out Enable Bit  (CLKO output disabled on the RA6 pin)
-#pragma config FCMEN = ON       // Fail-Safe Clock Monitor (Enabled)
-#pragma config IESO = ON        // Internal External Oscillator Switch Over Mode (Enabled)
+// FSIGN
 
-// CONFIG2H
-#pragma config WDTPS = 32768    // Watchdog Postscaler (1:32768)
+// FOSCSEL
+#pragma config FNOSC = FRCDIVN          // Oscillator Source Selection (Internal Fast RC (FRC) Oscillator with postscaler)
+#pragma config IESO = ON                // Two-speed Oscillator Start-up Enable bit (Start up device with FRC, then switch to user-selected oscillator source)
 
-// CONFIG3L
-#pragma config DSWDTOSC = INTOSCREF// DSWDT Clock Select (DSWDT uses INTRC)
-#pragma config RTCOSC = T1OSCREF// RTCC Clock Select (RTCC uses T1OSC/T1CKI)
-#pragma config DSBOREN = ON     // Deep Sleep BOR (Enabled)
-#pragma config DSWDTEN = ON     // Deep Sleep Watchdog Timer (Enabled)
-#pragma config DSWDTPS = G2     // Deep Sleep Watchdog Postscaler (1:2,147,483,648 (25.7 days))
+// FOSC
+#pragma config POSCMD = NONE            // Primary Oscillator Mode Select bits (Primary Oscillator disabled)
+#pragma config OSCIOFNC = OFF           // OSC2 Pin Function bit (OSC2 is clock output)
+#pragma config FCKSM = CSDCMD           // Clock Switching Mode bits (Both Clock switching and Fail-safe Clock Monitor are disabled)
+#pragma config PLLKEN = ON              // PLL Lock Status Control (PLL lock signal will be used to disable PLL clock output if lock is lost)
+#pragma config XTCFG = G3               // XT Config (24-32 MHz crystals)
+#pragma config XTBST = ENABLE           // XT Boost (Boost the kick-start)
 
-// CONFIG3H
-#pragma config IOL1WAY = ON     // IOLOCK One-Way Set Enable bit (The IOLOCK bit (PPSCON<0>) can be set once)
-#pragma config ADCSEL = BIT10   // ADC 10 or 12 Bit Select (10 - Bit ADC Enabled)
-#pragma config MSSP7B_EN = MSK7 // MSSP address masking (7 Bit address masking mode)
+// FWDT
+#pragma config RWDTPS = PS2147483648    // Run Mode Watchdog Timer Post Scaler select bits (1:2147483648)
+#pragma config RCLKSEL = LPRC           // Watchdog Timer Clock Select bits (Always use LPRC)
+#pragma config WINDIS = ON              // Watchdog Timer Window Enable bit (Watchdog Timer operates in Non-Window mode)
+#pragma config WDTWIN = WIN25           // Watchdog Timer Window Select bits (WDT Window is 25% of WDT period)
+#pragma config SWDTPS = PS2147483648    // Sleep Mode Watchdog Timer Post Scaler select bits (1:2147483648)
+#pragma config FWDTEN = ON              // Watchdog Timer Enable bit (WDT enabled in hardware)
 
-// CONFIG4L
-#pragma config WPFP = PAGE_63   // Write/Erase Protect Page Start/End Location (Write Protect Program Flash Page 63)
-#pragma config WPCFG = OFF      // Write/Erase Protect Configuration Region  (Configuration Words page not erase/write-protected)
+// FPOR
+#pragma config BISTDIS = DISABLED       // Memory BIST Feature Disable (mBIST on reset feature disabled)
 
-// CONFIG4H
-#pragma config WPDIS = OFF      // Write Protect Disable bit (WPFP<6:0>/WPEND region ignored)
-#pragma config WPEND = PAGE_WPFP// Write/Erase Protect Region Select bit (valid when WPDIS = 0) (Pages WPFP<6:0> through Configuration Words erase/write protected)
-#pragma config LS48MHZ = SYS48X8// Low Speed USB mode with 48 MHz system clock bit (System clock at 48 MHz USB CLKEN divide-by is set to 8)
+// FICD
+#pragma config ICS = PGD1               // ICD Communication Channel Select bits (Communicate on PGC1 and PGD1)
+#pragma config JTAGEN = OFF             // JTAG Enable bit (JTAG is disabled)
+#pragma config NOBTSWP = DISABLED       // BOOTSWP instruction disable bit (BOOTSWP instruction is disabled)
+
+// FDMTIVTL
+#pragma config DMTIVTL = 0xFFFF         // Dead Man Timer Interval low word (Enter Hexadecimal value)
+
+// FDMTIVTH
+#pragma config DMTIVTH = 0xFFFF         // Dead Man Timer Interval high word (Enter Hexadecimal value)
+
+// FDMTCNTL
+#pragma config DMTCNTL = 0xFFFF         // Lower 16 bits of 32 bit DMT instruction count time-out value (0-0xFFFF) (Enter Hexadecimal value)
+
+// FDMTCNTH
+#pragma config DMTCNTH = 0xFFFF         // Upper 16 bits of 32 bit DMT instruction count time-out value (0-0xFFFF) (Enter Hexadecimal value)
+
+// FDMT
+#pragma config DMTDIS = OFF             // Dead Man Timer Disable bit (Dead Man Timer is Disabled and can be enabled by software)
+
+// FDEVOPT
+#pragma config ALTI2C1 = OFF            // Alternate I2C1 Pin bit (I2C1 mapped to SDA1/SCL1 pins)
+#pragma config ALTI2C2 = OFF            // Alternate I2C2 Pin bit (I2C2 mapped to SDA2/SCL2 pins)
+#pragma config ALTI2C3 = OFF            // Alternate I2C3 Pin bit (I2C3 mapped to SDA3/SCL3 pins)
+#pragma config SMBEN = SMBUS            // SM Bus Enable (SMBus input threshold is enabled)
+#pragma config SPI2PIN = PPS            // SPI2 Pin Select bit (SPI2 uses I/O remap (PPS) pins)
+
+// FALTREG
+#pragma config CTXT1 = OFF              // Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits (Not Assigned)
+#pragma config CTXT2 = OFF              // Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 2 bits (Not Assigned)
+#pragma config CTXT3 = OFF              // Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 3 bits (Not Assigned)
+#pragma config CTXT4 = OFF              // Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 4 bits (Not Assigned)
+
+// FBTSEQ
+#pragma config BSEQ = 0xFFF             // Relative value defining which partition will be active after device Reset; the partition containing a lower boot number will be active (Enter Hexadecimal value)
+#pragma config IBSEQ = 0xFFF            // The one's complement of BSEQ; must be calculated by the user and written during device programming. (Enter Hexadecimal value)
 
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
@@ -87,7 +123,7 @@ void IncTest(char* pnt)
     ++(*pnt);
 }
 
-void main(void) {
+int main(void) {
     
     char test = 0;
     test = 1;
